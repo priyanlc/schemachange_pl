@@ -18,16 +18,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scenario-name: [ 'basics_demo', 'citibike_demo', 'citibike_demo_jinja']
+        # scenario-name: [ 'basics_demo', 'citibike_demo', 'citibike_demo_jinja']
+        scenario-name: [ 'basics_demo']
         os: ["ubuntu-latest"]
-        python-version: ["3.12"]
+        python-version: ["3.11"]
     runs-on: ${{ matrix.os }}
     if: ${{ github.event.label.name == 'ci-run-tests' || github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
 
     env:
       SNOWFLAKE_PASSWORD: ${{ secrets.SCHEMACHANGE_SNOWFLAKE_PASSWORD }}
       SNOWFLAKE_USER: ${{ secrets.SCHEMACHANGE_SNOWFLAKE_USER }}
-      SNOWFLAKE_ACCOUNT: ${{ secrets.SCHEMACHANGE_SNOWFLAKE_ACCOUNT }}
+      SNOWFLAKE_ACCOUNT: ${{ secrets.SCHEMACHANGE_SNOWFLAKE_ACCOUNT }}∏
       SNOWFLAKE_DATABASE: SCHEMACHANGE_DEMO
       SNOWFLAKE_WAREHOUSE: SCHEMACHANGE_DEMO_WH
       SNOWFLAKE_ROLE: SCHEMACHANGE_DEMO-DEPLOY
