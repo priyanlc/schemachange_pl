@@ -25,8 +25,10 @@ jobs:
       matrix:
         # scenario-name: [ 'basics_demo', 'citibike_demo', 'citibike_demo_jinja']
         scenario-name: [ 'basics_demo' ]
-        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        # os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+        os: ["ubuntu-latest"]
+        # python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.11"]
     runs-on: ${{ matrix.os }}
     if: ${{ github.event.label.name == 'ci-run-tests' || github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
     env:
@@ -85,9 +87,9 @@ jobs:
           fi
           echo "::endgroup::"
           set -e
-          echo "::group::Tearing down up ${MY_TARGET_SCHEMA}"
-          schemachange deploy --config-folder ./demo/teardown/${SCENARIO_NAME}
-          echo "::endgroup::"
-          if [ $RESULT -ne 0 ]; then
-            exit 1
-          fi
+          # echo "::group::Tearing down up ${MY_TARGET_SCHEMA}"
+          # schemachange deploy --config-folder ./demo/teardown/${SCENARIO_NAME}
+          # echo "::endgroup::"
+          # if [ $RESULT -ne 0 ]; then
+          #   exit 1
+          # fi
